@@ -38,13 +38,13 @@ nav {
   padding: 0 2rem;
   margin: 0 0 1rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-  background: #424874;
+  background: var(--color-primary);
 }
 
 h1 {
-  color: #a6b1e1;
+  color: var(--color-tertiary);
   font-family: 'Amatic SC', cursive;
-  border: 1px solid #a6b1e1;
+  border: 1px solid var(--color-tertiary);
   padding: 0.5rem 1rem;
   border-radius: 1rem;
 }
@@ -77,16 +77,16 @@ a:visited {
 }
 
 li a {
-  color: #dcd6f7;
-  padding: 0.25rem 0.5rem;
+  color: var(--color-quaternary);
+  padding: 0.4rem 0.8rem;
   border: 1px solid transparent;
   transition: all 0.2s ease-in-out;
 }
 
 li a:hover,
 li a.active {
-  color: #a6b1e1;
-  border-radius: 1rem;
-  border-color: #a6b1e1;
+  color: var(--color-tertiary);
+  border-radius: 1.2rem;
+  border-color: var(--color-tertiary);
 }
 </style>
