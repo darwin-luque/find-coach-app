@@ -15,6 +15,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/coaches/:id',
     redirect: '/', // temp while building individual coach page,
+    props: true,
     children: [
       {
         path: 'contact',
@@ -33,12 +34,13 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/:notFound(.*)',
     redirect: '/', // templ while building 404 page,
-  }
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  linkActiveClass: 'active',
 });
 
 export default router;
