@@ -24,3 +24,6 @@ pnpm-debug.log*
 
 # Base db.json
 db.json
+
+# Environment files
+.env*

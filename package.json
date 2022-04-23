@@ -10,7 +10,9 @@
     "backend": "json-server --watch db.json --port 3004"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "core-js": "^3.8.3",
+    "rxjs": "^7.5.5",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
