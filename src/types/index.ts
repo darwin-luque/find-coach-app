@@ -1,15 +1,7 @@
+import { Observable } from 'rxjs';
+
 export type Currency = 'USD';
 export type Period = 'hour' | 'day' | 'week';
-
-export interface Coach {
-  id: string;
-  name: string;
-  description: string;
-  contactInformation: ContactInformation;
-  fee: Fee;
-  areas: string[];
-  certified: boolean;
-}
 
 export interface Fee {
   amount: string;
@@ -22,10 +14,23 @@ export interface ContactInformation {
   phone: string;
 }
 
+export interface Coach {
+  id: string;
+  name: string;
+  description: string;
+  contactInformation: ContactInformation;
+  fee: Fee;
+  areas: string[];
+  certified: boolean;
+  isFavorite?: boolean;
+}
+
 export interface CoachState {
-  data: Coach[];
+  data$: Observable<Coach[]>;
   loading: boolean;
   error: string | null;
 }
 
-export interface State {}
+export interface State {
+  coaches?: CoachState; // Chack if this is needed
+}
