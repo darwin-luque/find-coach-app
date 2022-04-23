@@ -4,13 +4,13 @@ import HomeView from '../views/HomeView.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    // redirect: '/coaches', // uncomment when coaches page is ready
-    name: 'home',
+    redirect: '/coaches',
     component: HomeView,
   },
   {
     path: '/coaches',
-    redirect: '/', // temp while building coaches page
+    name: 'coaches',
+    component: () => import('../views/CoachesView.vue'),
   },
   {
     path: '/coaches/:id',
