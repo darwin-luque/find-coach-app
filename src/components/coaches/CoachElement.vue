@@ -84,7 +84,6 @@ p {
 
 a,
 a:visited {
-  color: var(--color-secondary);
   text-decoration: none;
 }
 

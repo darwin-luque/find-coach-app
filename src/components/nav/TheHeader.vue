@@ -73,7 +73,6 @@ li:last-child {
 a,
 a:visited {
   text-decoration: none;
-  color: inherit;
 }
 
 li a {

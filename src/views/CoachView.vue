@@ -12,6 +12,7 @@
       <coach-info :coach="coach" />
     </div>
   </base-container>
+  <router-link :to="`/coaches/${id}/contact`">Contact</router-link>
   <router-view></router-view>
 </template>
 
@@ -99,5 +100,27 @@ hr {
   height: 2px;
   background-color: var(--color-tertiary);
   width: 90%;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: var(--color-secondary);
+}
+
+a {
+  display: block;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 2rem 0.5rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+a:hover {
+  cursor: pointer;
+  transform: scale(1.05);
 }
 </style>
