@@ -4,14 +4,14 @@ import { axios$ } from '../../../services/custom-axios';
 import { Coach, CoachState, State } from '../../../types';
 
 export const coachesActions: ActionTree<CoachState, State> = {
-  async fetchCoaches({ commit }) {
+  async fetchCoaches({ commit, rootState }) {
     commit('setLoading', true);
     const rawCoaches$ = new BehaviorSubject<Coach[]>([]);
     axios$
       .get<Coach[]>(`${process.env.VUE_APP_API_URL}/coaches`)
       .then(({ data }) => {
         rawCoaches$.next(data);
-        commit('setCoaches', rawCoaches$);
+        commit('setCoaches', { rawCoaches$, areas$: rootState.areas?.data$ });
       })
       .catch((error) => commit('setError', error));
   },

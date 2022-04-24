@@ -14,6 +14,14 @@ export interface ContactInformation {
   phone: string;
 }
 
+export interface Area {
+  id: string;
+  name: string;
+  description: string;
+  color: string;
+  coaches: string[];
+}
+
 export interface Coach {
   id: string;
   name: string;
@@ -21,6 +29,7 @@ export interface Coach {
   contactInformation: ContactInformation;
   fee: Fee;
   areas: string[];
+  areasData?: Area[];
   certified: boolean;
   isFavorite?: boolean;
   formattedFee?: string;
@@ -30,10 +39,6 @@ export interface CoachState {
   data$: Observable<Coach[]>;
   loading: boolean;
   error: string | null;
-}
-
-export interface State {
-  coaches?: CoachState; // Chack if this is needed
 }
 
 export interface FormRules {
@@ -61,15 +66,15 @@ export interface RequestsState {
   error: string | null;
 }
 
-export interface Area {
-  id: string;
-  name: string;
-  description: string;
-  coaches: string[];
-}
-
 export interface AreasState {
   data$: Observable<Area[]>;
   loading: boolean;
   error: string | null;
+}
+
+export interface State {
+  // Check if making params optionals is needed
+  coaches?: CoachState;
+  areas?: AreasState;
+  requests?: RequestsState;
 }
