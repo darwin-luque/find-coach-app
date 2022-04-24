@@ -49,6 +49,7 @@ export interface FormField {
 }
 
 export interface Request {
+  id: number;
   email: string;
   message: string;
   coachId: string;

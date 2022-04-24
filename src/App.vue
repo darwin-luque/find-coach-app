@@ -11,10 +11,14 @@ export default defineComponent({
   components: { TheHeader },
   mounted() {
     this.fetchCoaches();
+    this.fetchRequests();
   },
   methods: {
     fetchCoaches() {
       this.$store.dispatch('coaches/fetchCoaches');
+    },
+    fetchRequests() {
+      this.$store.dispatch('requests/fetchRequests');
     },
   },
 });

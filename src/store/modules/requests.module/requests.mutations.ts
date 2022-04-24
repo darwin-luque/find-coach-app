@@ -11,4 +11,7 @@ export const requestsMutations: MutationTree<RequestsState> = {
   appendRequest(state, request: Request) {
     state.data.push(request);
   },
+  setRequests(state, requests: Request[]) {
+    state.data = requests;
+  },
 };

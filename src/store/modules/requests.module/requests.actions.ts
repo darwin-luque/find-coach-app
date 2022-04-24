@@ -13,4 +13,16 @@ export const requestsActions: ActionTree<RequestsState, State> = {
     }
     commit('setLoading', false);
   },
+  async fetchRequests({ commit }) {
+    commit('setLoading', true);
+    try {
+      const { data } = await axios$.get<Request[]>(
+        `${process.env.VUE_APP_API_URL}/requests`,
+      );
+      commit('setRequests', data);
+    } catch (error) {
+      commit('setError', error);
+    }
+    commit('setLoading', false);
+  },
 };
