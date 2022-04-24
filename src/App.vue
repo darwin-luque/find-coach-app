@@ -9,6 +9,14 @@ import TheHeader from './components/nav/TheHeader.vue';
 
 export default defineComponent({
   components: { TheHeader },
+  mounted() {
+    this.fetchCoaches();
+  },
+  methods: {
+    fetchCoaches() {
+      this.$store.dispatch('coaches/fetchCoaches');
+    },
+  },
 });
 </script>
 

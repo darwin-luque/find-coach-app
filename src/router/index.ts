@@ -14,7 +14,8 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/coaches/:id',
-    redirect: '/', // temp while building individual coach page,
+    name: 'coach',
+    component: () => import('../views/CoachView.vue'),
     props: true,
     children: [
       {

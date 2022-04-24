@@ -9,8 +9,10 @@
     </div>
     <p>Fee: {{ coach.formattedFee }}</p>
     <div class="buttons">
-      <button class="contact">Contact</button>
-      <button class="details">View Details</button>
+      <router-link :to="`/coaches/${coach.id}/contact`" class="contact">
+        Contact
+      </router-link>
+      <router-link :to="`/coaches/${coach.id}`" class="details">View Details</router-link>
     </div>
   </li>
 </template>
@@ -80,7 +82,13 @@ p {
   padding: 0.5rem var(--side-padding);
 }
 
-button {
+a,
+a:visited {
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+a {
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 0.25rem;
@@ -90,7 +98,7 @@ button {
   transition: transform 0.2s ease-in-out;
 }
 
-button:hover {
+a:hover {
   cursor: pointer;
   transform: scale(1.05);
 }

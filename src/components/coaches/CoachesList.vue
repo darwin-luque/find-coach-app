@@ -49,7 +49,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    this.fetchCoaches();
+    this.setCoaches(this.coaches$);
   },
   unmounted() {
     this.subscription?.unsubscribe();
