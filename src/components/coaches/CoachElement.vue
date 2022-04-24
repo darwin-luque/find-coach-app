@@ -1,12 +1,11 @@
 <template>
   <li>
-    <div class="header">
-      <h3>{{ coach.name }}</h3>
-      <app-favorite-button
-        :favorite="coach.isFavorite"
-        @toggle-favorite="toggleFavorite"
-      />
-    </div>
+    <coach-header
+      :name="coach.name"
+      :certified="coach.certified"
+      :isFavorite="coach.isFavorite"
+      @toggle-favorite="toggleFavorite"
+    />
     <p>Fee: {{ coach.formattedFee }}</p>
     <div class="buttons">
       <router-link :to="`/coaches/${coach.id}/contact`" class="contact">
@@ -19,10 +18,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import AppFavoriteButton from '../ui/AppFavoriteButton.vue';
+import CoachHeader from './CoachHeader.vue';
 
 export default defineComponent({
-  components: { AppFavoriteButton },
+  components: { CoachHeader },
   props: {
     coach: {
       type: Object,
@@ -57,12 +56,6 @@ li:first-child {
 
 li:last-child {
   margin-bottom: 0;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 h3 {

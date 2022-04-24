@@ -18,16 +18,19 @@ export default defineComponent({
   props: {
     coach: {
       type: Object,
-      required: true,
+      default: () => ({
+        contactInformation: { phone: '', email: '' },
+        formattedFee: '',
+      }),
     },
   },
   computed: {
     info() {
       return {
-        description: this.coach?.description,
-        fee: this.coach?.formattedFee,
-        phone: this.coach?.contactInformation.phone,
-        email: this.coach?.contactInformation.email,
+        description: this.coach.description,
+        fee: this.coach.formattedFee,
+        phone: this.coach.contactInformation.phone,
+        email: this.coach.contactInformation.email,
       };
     },
   },

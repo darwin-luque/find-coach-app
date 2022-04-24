@@ -1,10 +1,11 @@
 <template>
   <base-container>
     <div class="container">
-      <div class="header">
-        <h3>{{ coach?.name }}</h3>
-        <app-favorite-button
-          :favorite="coach?.isFavorite"
+      <div class="header-container">
+        <coach-header
+          :name="coach?.name"
+          :isFavorite="coach?.isFavorite"
+          :certified="coach?.certified"
           @toggle-favorite="toggleFavorite"
         />
       </div>
@@ -20,13 +21,13 @@
 import { Observable, Subscription } from 'rxjs';
 import { defineComponent } from 'vue';
 import { mapGetters } from 'vuex';
-import AppFavoriteButton from '../components/ui/AppFavoriteButton.vue';
 import CoachInfo from '../components/coaches/CoachInfo.vue';
 import BaseContainer from '../components/ui/BaseContainer.vue';
+import CoachHeader from '../components/coaches/CoachHeader.vue';
 import { Coach } from '../types';
 
 export default defineComponent({
-  components: { BaseContainer, AppFavoriteButton, CoachInfo },
+  components: { BaseContainer, CoachInfo, CoachHeader },
   props: {
     id: {
       type: String,
@@ -36,6 +37,7 @@ export default defineComponent({
   computed: {
     ...mapGetters({
       coaches$: 'coaches/coaches$',
+      loading: 'coaches/getLoading',
     }),
   },
   data() {
@@ -79,19 +81,8 @@ export default defineComponent({
   margin: 1rem auto;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.header-container {
   padding: 0 1rem 0 2rem;
-  margin: 1rem 0;
-}
-
-h3 {
-  font-size: 1.4rem;
-  color: var(--color-primary);
-  margin: 0;
-  padding: 0;
 }
 
 hr {

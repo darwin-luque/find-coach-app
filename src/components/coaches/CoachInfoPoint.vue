@@ -12,11 +12,11 @@ export default defineComponent({
   props: {
     name: {
       type: String,
-      required: true,
+      default: '',
     },
     content: {
       type: String,
-      required: true,
+      default: '',
     },
   },
 });
