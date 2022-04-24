@@ -70,7 +70,6 @@ export default defineComponent({
   },
   mounted() {
     this.setCoach(this.coaches$);
-    console.log(this.coach);
   },
   unmounted() {
     this.subscription?.unsubscribe();

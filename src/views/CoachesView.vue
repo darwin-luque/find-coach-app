@@ -1,16 +1,28 @@
 <template>
   <div>
     <h1>Coaches</h1>
-    <coaches-list />
+    <areas-filter @filter="setFilterAreasIds" />
+    <coaches-list :filteredAreasIds="filteredAreasIds" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import AreasFilter from '../components/areas/AreasFilter.vue';
 import CoachesList from '../components/coaches/CoachesList.vue';
 
 export default defineComponent({
-  components: { CoachesList },
+  components: { CoachesList, AreasFilter },
+  data() {
+    return {
+      filteredAreasIds: [] as string[],
+    };
+  },
+  methods: {
+    setFilterAreasIds(newFilteredAreasIds: string[]) {
+      this.filteredAreasIds = newFilteredAreasIds;
+    },
+  },
 });
 </script>
 

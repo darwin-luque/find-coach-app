@@ -2,7 +2,7 @@ import { GetterTree } from 'vuex';
 import { AreasState, State } from '../../../types';
 
 export const areasGetters: GetterTree<AreasState, State> = {
-  getAreas(state) {
+  areas$(state) {
     return state.data$;
   },
   getLoading(state) {

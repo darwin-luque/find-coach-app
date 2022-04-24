@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Observable, Subscription } from 'rxjs';
+import { map, Observable, Subscription } from 'rxjs';
 import { mapGetters } from 'vuex';
 import CoachElement from './CoachElement.vue';
 import BaseContainer from '../ui/BaseContainer.vue';
@@ -21,6 +21,12 @@ import { Coach } from '../../types';
 
 export default defineComponent({
   components: { CoachElement, BaseContainer, AppSpinner },
+  props: {
+    filteredAreasIds: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       subscription: null as Subscription | null,
@@ -35,9 +41,18 @@ export default defineComponent({
   },
   methods: {
     setCoaches(newCoaches$: Observable<Coach[]>) {
-      this.subscription = newCoaches$.subscribe((coaches) => {
-        this.coaches = coaches;
-      });
+      const ids = [...this.filteredAreasIds] as string[];
+      this.subscription = newCoaches$
+        .pipe(
+          map((coaches) =>
+            coaches.filter((coach) =>
+              ids.length > 0 ? ids.some((id) => coach.areas.includes(id)) : true,
+            ),
+          ),
+        )
+        .subscribe((coaches) => {
+          this.coaches = coaches;
+        });
     },
     fetchCoaches() {
       this.$store.dispatch('coaches/fetchCoaches');
@@ -46,6 +61,9 @@ export default defineComponent({
   watch: {
     coaches$(newCoaches$: Observable<Coach[]>) {
       this.setCoaches(newCoaches$);
+    },
+    filteredAreasIds() {
+      this.setCoaches(this.coaches$);
     },
   },
   mounted() {

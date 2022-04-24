@@ -14,9 +14,6 @@ export default defineComponent({
       required: true,
     },
   },
-  mounted() {
-    console.log(this.area);
-  },
 });
 </script>
 
