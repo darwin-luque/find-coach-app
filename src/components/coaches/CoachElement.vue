@@ -38,9 +38,11 @@ export default defineComponent({
 
 <style scoped>
 li {
+  --padding-sides: 1rem;
   width: 80%;
+  min-width: calc(300px - calc(2 * var(--padding-sides)));
   margin: 1rem auto;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem var(--padding-sides);
   border: 1px solid var(--color-tertiary);
   border-radius: 1rem;
   color: var(--color-secondary);

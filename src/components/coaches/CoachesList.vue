@@ -60,7 +60,6 @@ export default defineComponent({
 <style scoped>
 div {
   text-align: left;
-  padding: 1rem 2rem 0.5rem;
 }
 
 button {
@@ -71,6 +70,12 @@ button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   transition: transform 0.2s ease-in-out;
+  margin: 1rem 2rem 0;
+}
+
+ul {
+  padding: 0;
+  margin: 1rem auto;
 }
 
 button:hover {
