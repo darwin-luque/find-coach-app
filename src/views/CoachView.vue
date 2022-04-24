@@ -11,6 +11,7 @@
       </div>
       <hr />
       <coach-info :coach="coach" />
+      <area-tag v-for="area in coach?.areasData ?? []" :area="area" :key="area.id" />
     </div>
   </base-container>
   <router-link :to="`/coaches/${id}/contact`">Contact</router-link>
@@ -24,10 +25,11 @@ import { mapGetters } from 'vuex';
 import CoachInfo from '../components/coaches/CoachInfo.vue';
 import BaseContainer from '../components/ui/BaseContainer.vue';
 import CoachHeader from '../components/coaches/CoachHeader.vue';
+import AreaTag from '../components/areas/AreaTag.vue';
 import { Coach } from '../types';
 
 export default defineComponent({
-  components: { BaseContainer, CoachInfo, CoachHeader },
+  components: { BaseContainer, CoachInfo, CoachHeader, AreaTag },
   props: {
     id: {
       type: String,
@@ -68,6 +70,7 @@ export default defineComponent({
   },
   mounted() {
     this.setCoach(this.coaches$);
+    console.log(this.coach);
   },
   unmounted() {
     this.subscription?.unsubscribe();

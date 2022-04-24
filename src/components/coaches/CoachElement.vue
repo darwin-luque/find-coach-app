@@ -6,6 +6,7 @@
       :isFavorite="coach.isFavorite"
       @toggle-favorite="toggleFavorite"
     />
+    <area-tag v-for="area in coach.areasData" :area="area" :key="area.id" />
     <p>Fee: {{ coach.formattedFee }}</p>
     <div class="buttons">
       <router-link :to="`/coaches/${coach.id}/contact`" class="contact">
@@ -18,10 +19,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import AreaTag from '../areas/AreaTag.vue';
 import CoachHeader from './CoachHeader.vue';
 
 export default defineComponent({
-  components: { CoachHeader },
+  components: { CoachHeader, AreaTag },
   props: {
     coach: {
       type: Object,
