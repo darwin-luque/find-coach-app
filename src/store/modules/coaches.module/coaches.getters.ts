@@ -6,4 +6,7 @@ export const coachesGetters: GetterTree<CoachState, State> = {
   coaches$(state): Observable<Coach[]> {
     return state.data$;
   },
+  getLoading(state): boolean {
+    return state.loading;
+  },
 };

@@ -19,11 +19,13 @@ export const coachesMutations: MutationTree<CoachState> = {
         })),
       ),
     );
+    state.loading = false;
   },
   setLoading(state, loading) {
     state.loading = loading;
   },
   setError(state, error) {
     state.error = error;
+    state.loading = false;
   },
 };

@@ -2,7 +2,8 @@
   <base-container>
     <div>
       <button @click="fetchCoaches">Refresh</button>
-      <ul>
+      <app-spinner :size="60" v-if="coachesLoading" />
+      <ul v-else>
         <coach-element v-for="coach in coaches" :key="coach.id" :coach="coach" />
       </ul>
     </div>
@@ -14,11 +15,12 @@ import { defineComponent } from 'vue';
 import { Observable, Subscription } from 'rxjs';
 import { mapGetters } from 'vuex';
 import CoachElement from './CoachElement.vue';
-import { Coach } from '../../types';
 import BaseContainer from '../ui/BaseContainer.vue';
+import AppSpinner from '../ui/AppSpinner.vue';
+import { Coach } from '../../types';
 
 export default defineComponent({
-  components: { CoachElement, BaseContainer },
+  components: { CoachElement, BaseContainer, AppSpinner },
   data() {
     return {
       subscription: null as Subscription | null,
@@ -28,6 +30,7 @@ export default defineComponent({
   computed: {
     ...mapGetters({
       coaches$: 'coaches/coaches$',
+      coachesLoading: 'coaches/getLoading',
     }),
   },
   methods: {
