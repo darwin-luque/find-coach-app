@@ -32,7 +32,8 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/requests',
-    redirect: '/', // temp while building requests page,
+    name: 'requests',
+    component: () => import('../views/RequestsView.vue'),
   },
   {
     path: '/:notFound(.*)',
