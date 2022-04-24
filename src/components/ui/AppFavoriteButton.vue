@@ -1,5 +1,5 @@
 <template>
-  <button @click="emit('toggle-favorite')">
+  <button @click="toggleFavorite">
     <i :class="{ press: favorite }"></i>
     <span :class="{ press: favorite }">favorite!</span>
   </button>
@@ -16,6 +16,11 @@ export default defineComponent({
     },
   },
   emits: ['toggle-favorite'],
+  methods: {
+    toggleFavorite() {
+      this.$emit('toggle-favorite');
+    },
+  },
 });
 </script>
 
@@ -38,10 +43,6 @@ i {
   transition: 0.2s;
 }
 
-i:hover {
-  color: #e23b3b;
-}
-
 i:before {
   font-family: fontawesome;
   content: '\2665';
@@ -50,7 +51,7 @@ i:before {
 
 span {
   position: absolute;
-  bottom: 70px;
+  bottom: 50px;
   left: 0;
   right: 0;
   visibility: hidden;
@@ -67,7 +68,7 @@ i.press {
 }
 
 span.press {
-  bottom: 120px;
+  bottom: 45px;
   font-size: 14px;
   visibility: visible;
   animation: fade 1s;
@@ -90,7 +91,7 @@ span.press {
     padding: 10px 12px 8px;
   }
   50% {
-    padding: 14px 16px 12px;
+    padding: 12px 14px 10px;
     margin-top: -4px;
   }
   100% {

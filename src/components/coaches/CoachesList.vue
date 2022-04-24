@@ -37,8 +37,6 @@ export default defineComponent({
       });
     },
     fetchCoaches() {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       this.$store.dispatch('coaches/fetchCoaches');
     },
   },

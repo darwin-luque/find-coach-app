@@ -2,7 +2,10 @@
   <li>
     <div class="header">
       <h3>{{ coach.name }}</h3>
-      <app-favorite-button />
+      <app-favorite-button
+        :favorite="coach.isFavorite"
+        @toggle-favorite="toggleFavorite"
+      />
     </div>
     <p>Fee: {{ coach.formattedFee }}</p>
     <div class="buttons">
@@ -22,6 +25,11 @@ export default defineComponent({
     coach: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    toggleFavorite() {
+      this.$store.dispatch('coaches/toggleCoachFavorite', this.coach);
     },
   },
 });

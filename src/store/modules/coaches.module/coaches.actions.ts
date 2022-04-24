@@ -15,4 +15,17 @@ export const coachesActions: ActionTree<CoachState, State> = {
       })
       .catch((error) => commit('setError', error));
   },
+  async toggleCoachFavorite({ commit, state }, coach: Coach) {
+    const favorites = JSON.parse(localStorage.getItem('favorites') ?? '[]') as string[];
+    if (favorites.includes(coach.id)) {
+      localStorage.setItem(
+        'favorites',
+        JSON.stringify(favorites.filter((id) => id !== coach.id)),
+      );
+    } else {
+      favorites.push(coach.id);
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+    commit('setCoaches', state.data$);
+  },
 };
