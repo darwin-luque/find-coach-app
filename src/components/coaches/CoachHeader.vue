@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <h3>{{ name }}</h3>
+    <h3>{{ name }}<sup v-show="certified">✔️</sup></h3>
     <app-favorite-button
       :favorite="isFavorite"
       @toggle-favorite="$emit('toggle-favorite')"
@@ -44,5 +44,10 @@ h3 {
   color: var(--color-primary);
   margin: 0;
   padding: 0;
+}
+
+sup {
+  margin-left: 0.25rem;
+  font-size: 0.5rem;
 }
 </style>
