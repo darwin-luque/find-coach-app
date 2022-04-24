@@ -73,7 +73,11 @@ export default defineComponent({
   },
   methods: {
     contactCoach() {
-      console.log({ email: this.email.value, message: this.message.value });
+      this.$store.dispatch('requests/contactCoach', {
+        email: this.email.value,
+        message: this.message.value,
+        coachId: this.coachId,
+      });
     },
     updateEmail(newEmail: Event) {
       this.email.value = (newEmail.target as HTMLInputElement).value;

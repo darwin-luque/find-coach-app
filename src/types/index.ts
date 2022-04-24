@@ -47,3 +47,15 @@ export interface FormField {
   touched: boolean;
   valid: boolean;
 }
+
+export interface Request {
+  email: string;
+  message: string;
+  coachId: string;
+}
+
+export interface RequestsState {
+  data: Request[];
+  loading: boolean;
+  error: string | null;
+}

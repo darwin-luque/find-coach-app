@@ -22,6 +22,7 @@ const routes: Array<RouteRecordRaw> = [
         path: 'contact',
         name: 'contact coach',
         component: () => import('../views/ContactCoachView.vue'),
+        props: true,
       },
     ],
   },

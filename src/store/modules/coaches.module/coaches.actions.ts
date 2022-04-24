@@ -8,7 +8,7 @@ export const coachesActions: ActionTree<CoachState, State> = {
     commit('setLoading', true);
     const rawCoaches$ = new BehaviorSubject<Coach[]>([]);
     axios$
-      .get<Coach[]>(process.env.VUE_APP_COACHES_URL)
+      .get<Coach[]>(`${process.env.VUE_APP_API_URL}/coaches`)
       .then(({ data }) => {
         rawCoaches$.next(data);
         commit('setCoaches', rawCoaches$);

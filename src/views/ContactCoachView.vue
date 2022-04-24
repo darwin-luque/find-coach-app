@@ -1,7 +1,7 @@
 <template>
   <base-container>
     <h3>Contact Coach</h3>
-    <contact-coach-form :coach="coach" />
+    <contact-coach-form :coachId="id" />
   </base-container>
 </template>
 
