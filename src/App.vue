@@ -10,15 +10,11 @@ import TheHeader from './components/nav/TheHeader.vue';
 export default defineComponent({
   components: { TheHeader },
   mounted() {
-    this.fetchCoaches();
-    this.fetchRequests();
+    this.fetchData();
   },
   methods: {
-    fetchCoaches() {
-      this.$store.dispatch('coaches/fetchCoaches');
-    },
-    fetchRequests() {
-      this.$store.dispatch('requests/fetchRequests');
+    fetchData() {
+      this.$store.dispatch('fetchData');
     },
   },
 });

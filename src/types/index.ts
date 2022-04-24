@@ -60,3 +60,16 @@ export interface RequestsState {
   loading: boolean;
   error: string | null;
 }
+
+export interface Area {
+  id: string;
+  name: string;
+  description: string;
+  coaches: string[];
+}
+
+export interface AreasState {
+  data$: Observable<Area[]>;
+  loading: boolean;
+  error: string | null;
+}
