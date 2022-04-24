@@ -34,4 +34,8 @@ html {
   text-align: center;
   color: var(--color-secondary);
 }
+
+ul {
+  list-style: none;
+}
 </style>

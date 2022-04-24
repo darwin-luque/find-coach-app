@@ -4,7 +4,7 @@ export type Currency = 'USD';
 export type Period = 'hour' | 'day' | 'week';
 
 export interface Fee {
-  amount: string;
+  amount: number;
   currency: Currency;
   period: Period;
 }
@@ -23,6 +23,7 @@ export interface Coach {
   areas: string[];
   certified: boolean;
   isFavorite?: boolean;
+  formattedFee?: string;
 }
 
 export interface CoachState {

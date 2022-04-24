@@ -1,6 +1,7 @@
 import { BehaviorSubject, combineLatestWith, map, Observable } from 'rxjs';
 import { MutationTree } from 'vuex';
 import { Coach, CoachState } from '../../../types';
+import { feeFormatter } from '../../../utils';
 
 export const coachesMutations: MutationTree<CoachState> = {
   setCoaches(state, coaches$: Observable<Coach[]>) {
@@ -13,6 +14,7 @@ export const coachesMutations: MutationTree<CoachState> = {
       map(([coaches, favorites]) =>
         coaches.map((coach) => ({
           ...coach,
+          formattedFee: feeFormatter(coach.fee),
           isFavorite: favorites.includes(coach.id),
         })),
       ),
