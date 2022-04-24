@@ -20,7 +20,8 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: 'contact',
-        redirect: '/', // temp while building coach contact page,
+        name: 'contact coach',
+        component: () => import('../views/ContactCoachView.vue'),
       },
     ],
   },

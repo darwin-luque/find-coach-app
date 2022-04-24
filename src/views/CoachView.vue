@@ -63,9 +63,6 @@ export default defineComponent({
       this.setCoach(newCoaches$);
     },
   },
-  created() {
-    console.log('created');
-  },
   mounted() {
     console.log('mounted');
     this.setCoach(this.coaches$);

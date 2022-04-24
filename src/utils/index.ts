@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Fee } from '../types';
+import { Fee, FormField } from '../types';
 
 export const promisifyObservable = <T>(observable: Observable<T>): Promise<T> => {
   return new Promise((resolve, reject) => {
@@ -19,4 +19,19 @@ export const feeFormatter = (fee: Fee): string => {
   });
 
   return `${formatter.format(amount)} / ${period}`;
+};
+
+export const validateFormField = ({ value, rules }: FormField) => {
+  let output = true;
+
+  if (rules.required) {
+    output = output && value !== '';
+  }
+  if (rules.email) {
+    output =
+      typeof value === 'string'
+        ? output && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+        : false;
+  }
+  return output;
 };

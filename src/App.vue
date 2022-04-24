@@ -26,6 +26,7 @@ export default defineComponent({
   --color-secondary: #52616b;
   --color-tertiary: #c9d6df;
   --color-quaternary: #f0f5f9;
+  --color-error: #ff5a5f;
 }
 
 body,

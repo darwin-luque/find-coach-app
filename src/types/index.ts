@@ -35,3 +35,15 @@ export interface CoachState {
 export interface State {
   coaches?: CoachState; // Chack if this is needed
 }
+
+export interface FormRules {
+  required?: boolean;
+  email?: boolean;
+}
+
+export interface FormField {
+  value: string | number | boolean;
+  rules: FormRules;
+  touched: boolean;
+  valid: boolean;
+}
