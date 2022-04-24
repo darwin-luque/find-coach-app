@@ -35,7 +35,30 @@ table {
   width: 100%;
 }
 
-tr {
-  border-bottom: 1px solid #ccc;
+tr:last-child {
+  margin-bottom: 0;
+}
+
+thead th:last-child,
+tbody td:last-child,
+thead th:first-child,
+tbody td:first-child {
+  width: 20%;
+  text-align: center;
+}
+
+th,
+td {
+  padding: 1rem 0.5rem;
+  vertical-align: top;
+}
+
+td {
+  text-align: left;
+}
+
+thead th:last-child,
+tbody td:last-child {
+  width: 15%;
 }
 </style>
