@@ -49,8 +49,9 @@ export default defineComponent({
     },
   },
   watch: {
-    areas$(newCoaches$: Observable<Area[]>) {
-      this.setAreas(newCoaches$);
+    areas$(newAreas$: Observable<Area[]>) {
+      console.log({ newAreas$ });
+      this.setAreas(newAreas$);
     },
     selected(newSelected: string[]) {
       this.$emit('filter', newSelected);
