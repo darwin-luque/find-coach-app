@@ -1,13 +1,16 @@
 import { ActionTree } from 'vuex';
-import { axios$ } from '../../../services/custom-axios';
+import { database } from '../../../configurations/firebase';
+import { FirebaseService } from '../../../services/firebase.service';
 import { RequestsState, State, Request } from '../../../types';
+
+const firebaseService = new FirebaseService(database);
 
 export const requestsActions: ActionTree<RequestsState, State> = {
   async contactCoach({ commit }, request: Request) {
     commit('setLoading', true);
     try {
-      await axios$.post(`${process.env.VUE_APP_API_URL}/requests`, request);
-      commit('appendRequest', request);
+      const addedRequest = await firebaseService.addRequest(request);
+      commit('appendRequest', addedRequest);
     } catch (error) {
       commit('setError', error);
     }
@@ -16,10 +19,8 @@ export const requestsActions: ActionTree<RequestsState, State> = {
   async fetchRequests({ commit }) {
     commit('setLoading', true);
     try {
-      const { data } = await axios$.get<Request[]>(
-        `${process.env.VUE_APP_API_URL}/requests`,
-      );
-      commit('setRequests', data);
+      const requests = await firebaseService.getRequests();
+      commit('setRequests', requests);
     } catch (error) {
       commit('setError', error);
     }

@@ -1,19 +1,22 @@
 import { BehaviorSubject } from 'rxjs';
 import { ActionTree } from 'vuex';
-import { axios$ } from '../../../services/custom-axios';
+import { database } from '../../../configurations/firebase';
+import { FirebaseService } from '../../../services/firebase.service';
 import { Coach, CoachState, State } from '../../../types';
+
+const firebaseSevice = new FirebaseService(database);
 
 export const coachesActions: ActionTree<CoachState, State> = {
   async fetchCoaches({ commit, rootState }) {
     commit('setLoading', true);
     const rawCoaches$ = new BehaviorSubject<Coach[]>([]);
-    axios$
-      .get<Coach[]>(`${process.env.VUE_APP_API_URL}/coaches`)
-      .then(({ data }) => {
-        rawCoaches$.next(data);
-        commit('setCoaches', { rawCoaches$, areas$: rootState.areas?.data$ });
-      })
-      .catch((error) => commit('setError', error));
+    try {
+      const coaches = await firebaseSevice.getCoaches();
+      rawCoaches$.next(coaches);
+      commit('setCoaches', { rawCoaches$, areas$: rootState.areas?.data$ });
+    } catch (error) {
+      commit('setError', error);
+    }
   },
   async toggleCoachFavorite({ commit, state }, coach: Coach) {
     const favorites = JSON.parse(localStorage.getItem('favorites') ?? '[]') as string[];
