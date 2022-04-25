@@ -7,8 +7,6 @@
   - [Thecnical Details](#technical-details)
 - [Using the Application](#using-the-application)
   - [Installation](#installation)
-  - [Configuration](#configuration)
-  - [Run the Backend](#run-the-backend)
   - [Run the Application](#run-the-application)
 - [Todos](#todos)
 - [Contributions](#contributions)
@@ -21,7 +19,7 @@ Mock application to find coaches for given areas. The application presents a lis
 
 ### Technical Details
 
-The application is based on [Vue.js](https://vuejs.org/), written in [TypeScript](https://www.typescriptlang.org/), and uses [Vuex](https://vuex.vuejs.org/) for state manager. The data is obtained from a backend that is set with [JSON Placeholder Server](https://github.com/typicode/json-server).
+The application is based on [Vue.js](https://vuejs.org/), written in [TypeScript](https://www.typescriptlang.org/), and uses [Vuex](https://vuex.vuejs.org/) for state manager. The data is obtained from firebase.
 
 The store of the application uses modules to sectionized the state. The following modules are used:
 
@@ -41,18 +39,6 @@ The coaches and areas modules use RxJS to manage the stream of data. This allows
 
 1. Clone the repository: `git clone https://github.com/darwin-luque/find-coach-app.git`.
 2. Install dependencies: `yarn install`.
-
-### Configuration
-
-1. Create a `.env` file.
-2. Copy the content from `.env.example` to `.env`.
-
-### Run the Backend
-
-1. Create a `db.json` file in the root of the project.
-2. Copy the content from `db.example.json` to `db.json`
-3. Adjust as desired the content of `db.json`. Make sure to keep the same structure.
-4. Run the server: `yarn backend`
 
 ### Run the Application
 
